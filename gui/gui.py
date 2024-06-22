@@ -1,58 +1,77 @@
 from tkinter import *
 import joblib
-import numpy as np
+import os
 
-def show_entry_fields():
-    p1 = float(e1.get())
-    p2 = float(e2.get())
-    p3 = float(e3.get())
-    p4 = float(e4.get())
-    p5 = float(e5.get())
-    p6 = float(e6.get())
-    p7 = float(e7.get())
-    p8 = float(e8.get())
+model_path = os.path.join(os.path.dirname(__file__), "../model/model_joblib_diabetes")
 
-    model = joblib.load('model_joblib_diabetes')
-    result = model.predict([[p1, p2, p3, p4, p5, p6, p7, p8]])
 
-    if result == 0:
-        Label(master, text="Non-Diabetic").grid(row=31)
-    else:
-        Label(master, text="Diabetic").grid(row=31)
+def predict_diabetes():
+    values = [float(entry.get()) for entry in entries]
+
+    model = joblib.load(model_path)
+    prediction = model.predict([values])
+
+    predicted = "Non-Diabetic" if prediction == 0 else "Diabetic"
+    result_label.config(text=predicted)
+
 
 master = Tk()
-master.title("Diabetes Prediction Using Machine Learning")
+master.title("Diabetes Prediction")
+master.geometry("500x500")
+master.configure(bg="#f0f0f0")
 
-label = Label(master, text="Diabetes Prediction Using Machine Learning", bg="black", fg="white").grid(row=0, columnspan=2)
+font_label = ("Helvetica", 12)
+font_entry = ("Helvetica", 12)
+font_button = ("Helvetica", 12, "bold")
 
-Label(master, text="Pregnancies").grid(row=1)
-Label(master, text="Glucose").grid(row=2)
-Label(master, text="BloodPressure").grid(row=3)
-Label(master, text="SkinThickness").grid(row=4)
-Label(master, text="Insulin").grid(row=5)
-Label(master, text="BMI").grid(row=6)
-Label(master, text="DiabetesPedigreeFunction").grid(row=7)
-Label(master, text="Age").grid(row=8)
+header_label = Label(
+    master,
+    text="Diabetes Prediction",
+    font=("Helvetica", 16, "bold"),
+    bg="#333",
+    fg="white",
+    padx=10,
+    pady=10,
+)
+header_label.pack(fill="x")
 
-e1 = Entry(master)
-e2 = Entry(master)
-e3 = Entry(master)
-e4 = Entry(master)
-e5 = Entry(master)
-e6 = Entry(master)
-e7 = Entry(master)
-e8 = Entry(master)
+labels = [
+    "Pregnancies",
+    "Glucose",
+    "Blood Pressure",
+    "Skin Thickness",
+    "Insulin",
+    "BMI",
+    "Diabetes Pedigree Function",
+    "Age",
+]
+entries = []
 
-e1.grid(row=1, column=1)
-e2.grid(row=2, column=1)
-e3.grid(row=3, column=1)
-e4.grid(row=4, column=1)
-e5.grid(row=5, column=1)
-e6.grid(row=6, column=1)
-e7.grid(row=7, column=1)
-e8.grid(row=8, column=1)
+for label_text in labels:
+    frame = Frame(master, bg="#f0f0f0")
+    frame.pack(padx=10, pady=5, fill="x")
 
-Button(master, text='Predict', command=show_entry_fields).grid()
+    label = Label(
+        frame, text=label_text, font=font_label, bg="#f0f0f0", width=25, anchor="w"
+    )
+    label.pack(side="left")
 
-mainloop()
+    entry = Entry(frame, font=font_entry, bg="white", relief="solid", bd=1)
+    entry.pack(side="right", padx=10, fill="x")
 
+    entries.append(entry)
+
+predict_button = Button(
+    master,
+    text="Predict",
+    font=font_button,
+    bg="#4CAF50",
+    fg="white",
+    command=predict_diabetes,
+)
+predict_button.pack(pady=20, ipadx=20, ipady=10)
+
+result_label = Label(master, text="", font=("Arial", 16, "bold"), bg="#f0f0f0", pady=10)
+result_label.pack()
+
+master.mainloop()
