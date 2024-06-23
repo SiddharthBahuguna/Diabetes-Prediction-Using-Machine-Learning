@@ -12,6 +12,7 @@ $~$
 |   
 |__ gui/
 |   |__ gui.py
+|   |__ gui_ctk.py
 |   
 |__ model/
 |   |__ model_joblib_diabetes
@@ -42,7 +43,7 @@ $~$
 
 3. Install dependencies:
    ```bash
-   pip install pandas numpy scikit-learn joblib tkinter
+   pip install pandas numpy scikit-learn joblib tk customtkinter
    ```
 
 ## 📊 How to Run Jupyter Notebook
@@ -59,9 +60,13 @@ $~$
   ```bash
   cd gui
   ```
-- Run the GUI application:
+- Run the GUI (Tkinter) application:
   ```bash
   python gui.py
+  ```
+- Run the GUI (Custom Tkinter) application:
+  ```bash
+  python gui_ctk.py
   ```
 
 $~$
@@ -74,7 +79,7 @@ $~$
 - [x] EDA
 - [x] Model
 - [X] Tkinter Application
-- [ ] Custom Tkinter Application
+- [X] Custom Tkinter Application
 - [ ] Flask/FastAPI Web Application
 - [ ] Streamlit Application
 
