@@ -78,7 +78,7 @@ $~$
 
 
 <details markdown='1'>
-   <summary><h3>EDA Screenshots</h3>
+   <summary><h3>EDA Screenshots</h3> <br>
             <h4>Click and Zoom on the Image for Better Visibility</h4> 
    </summary>
       <h4>Histogram</h4>
