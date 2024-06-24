@@ -76,6 +76,34 @@ $~$
 
 ![nd](https://github.com/SiddharthBahuguna/Diabetes-Prediction-Using-Machine-Learning/assets/112819453/58a43b40-76c4-471f-b143-bc5d619e3648)
 
+
+<details markdown='1'>
+   <summary><h3>EDA Screenshots</h3> <br>
+            <h4>Click and Zoom on the Image for Better Visibility</h4> 
+   </summary>
+      <h4>Histogram</h4>
+      <img src="https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/7a0e54ec-3642-475e-9bae-e5de07963d25" alt="Histogram" width=60% height=60%>
+      <br><br><br>
+      <h4>Histplot and Kde</h4>
+      <img src="https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/6c9a91e1-efaa-4f8d-8c87-b49f1e02f5f4" alt="Histplot+kde" width=60% height=60%>
+      <br><br><br>
+      <h4>Pie and Bar chart of Outcome</h4>
+      <img src="https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/069bd677-9218-49d7-959c-bdab4e6d015a" alt="pie+bar of outcome" width=60% height=60%>
+      <br><br><br>
+      <h4>Correlation Matrix</h4>
+      <img src="https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/026c91ae-680a-48fd-916d-58c7a620204a" alt="correlation_matrix" width=60% height=60%>
+      <br><br><br>
+      <h4>Boxplot</h4>
+      <img src="https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/f036193e-d388-450b-83e1-5a59e3ba3fb6" alt="BOXPLOT" width=60% height=60%>
+      <br><br><br>
+      <h4>Countplot</h4>
+      <img src="https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/0f667fa9-615e-4049-91e4-eb21165f87cc" alt="countplot" width=60% height=60%>
+      <br><br><br>
+      <h4>Scatterplot</h4>
+      <img src="https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/7d44b143-a773-4be6-a047-27131aa407cf" alt="scatter-plot" width=60% height=60%>
+</details>
+
+
 ## :bicyclist: Roadmap
 - [x] EDA
 - [x] Model
