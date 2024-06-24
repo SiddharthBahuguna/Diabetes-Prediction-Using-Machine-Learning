@@ -18,6 +18,7 @@ $~$
 |   |__ model_joblib_diabetes
 |   
 |__ Diabetes Prediction.ipynb
+|__ EDA_of_the_dataset.ipynb
 |__ LICENSE
 |__ README.md
 |__ .gitignore
@@ -88,6 +89,12 @@ $~$
 ## Acknowledgement
 
 - PIMA Indians Diabetes Database
+
+$~$
+
+## Description of EDA_of_the_dataset.ipynb
+
+This notebook file contains the Exploratory Data Analysis of the Diabetes Dataset. It includes the visualization that helps understand the features present in the dataset and their relation with the outcome label. 
 
 $~$
 
