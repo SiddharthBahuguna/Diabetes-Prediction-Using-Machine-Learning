@@ -78,7 +78,9 @@ $~$
 
 
 <details markdown='1'>
-   <summary><h3>EDA Screenshots</h3></summary>
+   <summary><h3>EDA Screenshots</h3>
+            <h4>Click and Zoom on the Image for Better Visibility</h4> 
+   </summary>
       <h4>Histogram</h4>
       <img src="https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/7a0e54ec-3642-475e-9bae-e5de07963d25" alt="Histogram" width=60% height=60%>
       <br><br><br>
