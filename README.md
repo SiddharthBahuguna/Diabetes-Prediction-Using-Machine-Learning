@@ -16,7 +16,8 @@ $~$
 |   
 |__ model/
 |   |__ model_joblib_diabetes
-|   
+|
+|__ Diabetes Prediction + Gradio Interface.ipynb 
 |__ Diabetes Prediction.ipynb
 |__ EDA_of_the_dataset.ipynb
 |__ LICENSE
