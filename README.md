@@ -16,7 +16,8 @@ $~$
 |   
 |__ model/
 |   |__ model_joblib_diabetes
-|   
+|
+|__ Diabetes Prediction + Gradio Interface.ipynb 
 |__ Diabetes Prediction.ipynb
 |__ EDA_of_the_dataset.ipynb
 |__ LICENSE
@@ -74,8 +75,14 @@ $~$
 
 ## 📸 Screenshots
 
+#### Tkinter UI 
+
 ![nd](https://github.com/SiddharthBahuguna/Diabetes-Prediction-Using-Machine-Learning/assets/112819453/58a43b40-76c4-471f-b143-bc5d619e3648)
 
+
+#### Gradio UI
+
+![Gradio UI](https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/698ccb3d-916a-4858-9365-3d43c99ce358)
 
 <details markdown='1'>
    <summary><h3>EDA Screenshots</h3> <br>
