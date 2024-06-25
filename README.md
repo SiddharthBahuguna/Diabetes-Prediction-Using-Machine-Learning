@@ -75,6 +75,8 @@ $~$
 
 ## 📸 Screenshots
 
+#### Tkinter UI 
+
 ![nd](https://github.com/SiddharthBahuguna/Diabetes-Prediction-Using-Machine-Learning/assets/112819453/58a43b40-76c4-471f-b143-bc5d619e3648)
 
 
