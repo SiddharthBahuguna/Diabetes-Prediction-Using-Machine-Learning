@@ -13,6 +13,12 @@ $~$
 |__ gui/
 |   |__ gui.py
 |   |__ gui_ctk.py
+|
+|__ flask/
+|   |__ app.py
+|   |__ templates/
+|       |__ index.html
+|       |__ result.html
 |   
 |__ model/
 |   |__ model_joblib_diabetes
@@ -94,6 +100,16 @@ $~$
 #### Gradio UI
 
 ![Gradio UI](https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/698ccb3d-916a-4858-9365-3d43c99ce358)
+
+<details>
+   <summary>
+      <h4>Flask Web App</h4>
+   </summary>
+
+![Screenshot_26-6-2024_95820_127 0 0 1](https://github.com/kom-senapati/Diabetes-Prediction-Using-Machine-Learning/assets/92045934/f11a164f-befe-4b63-bf39-0a0ecad72009)
+![Screenshot_26-6-2024_95830_127 0 0 1](https://github.com/kom-senapati/Diabetes-Prediction-Using-Machine-Learning/assets/92045934/474c2527-fb83-4eb8-9a1a-0bce7b0fb325)
+</details>
+
 
 <details markdown='1'>
    <summary><h3>EDA Screenshots</h3> <br>
