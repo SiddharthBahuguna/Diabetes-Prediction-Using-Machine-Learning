@@ -45,7 +45,7 @@ $~$
 
 3. Install dependencies:
    ```bash
-   pip install pandas numpy scikit-learn joblib tk customtkinter
+   pip install pandas numpy scikit-learn joblib tk customtkinter Flask
    ```
 
 ## 📊 How to Run Jupyter Notebook
@@ -69,6 +69,17 @@ $~$
 - Run the GUI (Custom Tkinter) application:
   ```bash
   python gui_ctk.py
+  ```
+
+## 🌐 How to Run Flask Web App
+
+- Navigate to the `flask` folder:
+  ```bash
+  cd flask
+  ```
+- Run the flask application:
+  ```bash
+  python app.py
   ```
 
 $~$
