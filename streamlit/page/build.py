@@ -36,6 +36,7 @@ RANDOM_STATE_HELP = "Controls both the randomness of the bootstrapping of the sa
 preprocess = st.sidebar.checkbox("Apply Data Pre-Processing", value=True, help=PREPROCESS_HELP)
 
 st.sidebar.header("Set Parameters")
+st.sidebar.warning("Parameter values set at random may result in long building time")
 split_size = st.sidebar.slider("Data split ratio (% for training)", 10, 90, 80, 5)
 
 st.sidebar.subheader("Learning Parameters")
@@ -64,6 +65,7 @@ st.sidebar.write("---")
 parameter_n_jobs = st.sidebar.select_slider('Number of jobs to run in parallel (n_jobs)', options=[1, -1], help=N_JOBS_HELP)
 st.sidebar.write("---")
 
+# Create range variables for appropriate features
 
 n_estimators_range = np.arange(parameter_n_estimators[0], parameter_n_estimators[1]+parameter_n_estimators_step, parameter_n_estimators_step)
 max_features_range = np.arange(parameter_max_features[0], parameter_max_features[1]+1, 1)
@@ -121,7 +123,7 @@ def preprocess_data(df):
 
     # ----------------- #
 
-    # Feature Engineering
+    # Feature Engineering (Binning to create new features with discrete values for better identification)
 
     # On Insulin
     NewBMI = pd.Series(["Underweight", "Normal", "Overweight", "Obesity 1", "Obesity 2", "Obesity 3"], dtype = "category")
@@ -141,7 +143,7 @@ def preprocess_data(df):
     
     df = df.assign(NewInsulinScore=df.apply(set_insulin, axis=1))
 
-    # On Glucose
+    # On Glucose (Binning)
     NewGlucose = pd.Series(["Low", "Normal", "Overweight", "Secret", "High"], dtype = "category")
     df["NewGlucose"] = NewGlucose
     df.loc[df["Glucose"] <= 70, "NewGlucose"] = NewGlucose[0]
@@ -151,10 +153,12 @@ def preprocess_data(df):
 
     # ----------------- #
 
-    # One-hot encoding
+    # One-hot encoding (Converting the categorical values to numerical by separating them as features)
     df = pd.get_dummies(df, columns =["NewBMI","NewInsulinScore", "NewGlucose"], drop_first = True)
     categorical_df = df[['NewBMI_Obesity 1','NewBMI_Obesity 2', 'NewBMI_Obesity 3', 'NewBMI_Overweight','NewBMI_Underweight',
                         'NewInsulinScore_Normal','NewGlucose_Low','NewGlucose_Normal', 'NewGlucose_Overweight', 'NewGlucose_Secret']]
+
+    # Separating target variable and feature_vector
 
     y = df["Outcome"]
     X = df.drop(["Outcome",'NewBMI_Obesity 1','NewBMI_Obesity 2', 'NewBMI_Obesity 3', 'NewBMI_Overweight','NewBMI_Underweight',
@@ -164,12 +168,18 @@ def preprocess_data(df):
 
     # ----------------- #
 
-    #Scaling using RobustScaler()
+    # Scaling using RobustScaler()
+    # Scale features using statistics that are robust to outliers.
+    # This Scaler removes the median and scales the data according to
+    # the quantile range (defaults to IQR: Interquartile Range). 
+    # The IQR is the range between the 1st quartile (25th quantile) 
+    # and the 3rd quartile (75th quantile).
 
     transformer = RobustScaler().fit(X)
     X = transformer.transform(X)
     X = pd.DataFrame(X, columns = cols, index = index)
 
+    # Join the scaled data (numerical) and one-hot encoded data
     X = pd.concat([X,categorical_df], axis = 1)
     processed_df = pd.concat([X,y], axis=1 )
     return processed_df
@@ -186,9 +196,11 @@ def build_model(df):
 
     # Data Splitting
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=split_size, random_state=parameter_random_state)
-    progress_bar.progress(30, "The best way to learn Data Science, is to do Data Science - Data Professor (This might take whille)")
+    
+    # Quote by the Data Professor
+    progress_bar.progress(30, "The best way to learn Data Science, is to do Data Science - Data Professor (This might take a whille)")
 
-    # Applying Parameters to the RFC model and fitting
+    # Applying Parameters to the RFC model and fitting using GridSearchCV
     rfc = RandomForestClassifier(
         n_estimators=parameter_n_estimators,
         max_depth=parameter_max_depth,
@@ -206,7 +218,7 @@ def build_model(df):
 
     progress_bar.progress(80, "Testing Model, Almost there!")
     time.sleep(0.5)
-    
+
     # Predict from the test set
     y_pred_train = grid.predict(X_train)
     y_pred_test = grid.predict(X_test)
@@ -240,8 +252,7 @@ def build_model(df):
     # Get significance score of variables
     rfc_tuned = RandomForestClassifier(**grid.best_params_)
     rfc_tuned.fit(X, y)
-    feature_imp = pd.Series(rfc_tuned.feature_importances_,
-                        index=X.columns).sort_values(ascending=False)
+    feature_imp = pd.Series(rfc_tuned.feature_importances_, index=X.columns).sort_values(ascending=False)
     significance_df = pd.DataFrame({'Significance Score Of Variables': feature_imp, 'Variables': feature_imp.index})
     fig = px.bar(significance_df, x='Significance Score Of Variables', y='Variables', title='Variable Severity Levels of the Best Model')
     st.plotly_chart(fig)
@@ -249,15 +260,15 @@ def build_model(df):
     # ----------------- #
 
     # Process grid data
-    
+
     grid_results = pd.DataFrame(grid.cv_results_)[['param_max_features','param_n_estimators','mean_test_score']]
-    
+
     # Segment data into groups based on the 2 hyperparameters
-    
+
     grid_contour = grid_results.groupby(['param_max_features','param_n_estimators']).mean()
 
     # Pivoting the data
-    
+
     grid_reset = grid_contour.reset_index()
     grid_reset.columns = ['param_max_features', 'param_n_estimators', 'mean_test_score']
     grid_pivot = grid_reset.pivot(index = 'param_max_features', columns = 'param_n_estimators')
@@ -322,7 +333,8 @@ if(st.button("Build Model", type='primary')):
     st.session_state.predict_button = True
     progress_bar.progress(0, "Pre-processing Data, sit back & relax")
     time.sleep(0.5)
-    
+
+    # If data preprocessing is to be applied
     if(preprocess):
         processed_df = preprocess_data(df)
         build_model(processed_df)

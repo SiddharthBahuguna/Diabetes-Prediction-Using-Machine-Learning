@@ -1,5 +1,6 @@
 import streamlit as st
 
+# Setting page configurations
 st.set_page_config(
     page_title="Diabetes Prediction Application using ML", layout="wide", initial_sidebar_state="expanded",
     menu_items= {
