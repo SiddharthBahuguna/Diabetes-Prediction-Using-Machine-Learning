@@ -20,6 +20,13 @@ $~$
 |       |__ index.html
 |       |__ result.html
 |   
+|__ streamlit/
+|   |__ app.py
+|   |__ page/
+|       |__  build.py
+|       |__  predict.py
+|       |__  visualize.py
+|
 |__ model/
 |   |__ model_joblib_diabetes
 |
@@ -143,8 +150,8 @@ $~$
 - [x] Model
 - [X] Tkinter Application
 - [X] Custom Tkinter Application
-- [ ] Flask/FastAPI Web Application
-- [ ] Streamlit Application
+- [X] Flask/FastAPI Web Application
+- [X] Streamlit Application
 
 $~$
 

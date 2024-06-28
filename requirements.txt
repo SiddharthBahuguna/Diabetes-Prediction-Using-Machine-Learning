@@ -1,4 +1,5 @@
 customtkinter==5.2.2
+flask==3.0.3
 gradio==4.37.1
 joblib==1.4.2
 matplotlib==3.8.4
