@@ -6,7 +6,9 @@ import os
 
 def visualize_page():
 
+    # Get path of the dataset
     filepath = os.path.join(os.path.dirname(__file__), "../../data/diabetes.csv")
+    
     st.title("Exploratory Data Analysis")
     st.markdown(
         """
@@ -17,37 +19,33 @@ def visualize_page():
     with st.sidebar.header("Upload your CSV Dataset for an EDA!"):
         uploaded_file = st.sidebar.file_uploader("Input CSV file here", type=['csv'])
     
+    # If no file uploaded
     if uploaded_file is not None:
         
-        # @st.cache_data
-        def load_csv():
-            csv = pd.read_csv(uploaded_file)
-            return csv
-        
-        df = load_csv()
+        df = pd.read_csv(uploaded_file)
         profile_report = ProfileReport(df, explorative=True)
         st.subheader("**Pandas Profiling Report will be generated in your local directory**")
         st.subheader("Input DataFrame")
         st.write(df.head(5))
 
         st.divider()
-
         st.subheader("**Please wait while the file is being rendered**")
-        st.text("You can download using the button below:")
-        # Save in local directory
-        profile_report.to_file("profile_report.html")
-        # Option to download the file
-        st.download_button("Click to download Profiling Report", "html", "profile_report.html", type='primary')
         
+        # Open EDA.html and save in current working directory
+        profile_report.to_file("custom_EDA.html", silent=False)
+        st.text("custom_EDA.html file has been saved in your current working directory.")
+
+    # if no file uploaded for EDA
     else:
         st.info("Upload a CSV Dataset or use Default Dataset")
         
+        # If default dataset is to be used
         if st.button("Press to use PIMA Indians Diabetes Dataset"):
             @st.cache_data
             def load_data():
                 return pd.read_csv(filepath)
             df = load_data()
-        
+
             profile_report = ProfileReport(df, explorative=True)
             st.subheader("**Pandas Profiling Report will be generated in your local directory**")
             st.subheader("Input DataFrame")
@@ -56,10 +54,8 @@ def visualize_page():
             st.divider()
 
             st.subheader("**Please wait while the file is being rendered**")
-            st.text("Alternatively, you can download using the button below:")
-            # Save in local directory
-            profile_report.to_file("profile_report.html")
-            # Option to download the file
-            st.download_button("Click to download Profiling Report", "html", "profile_report.html", type='primary')
+            # Open EDA.html and save in current working directory
+            profile_report.to_file("EDA.html", silent = False)
+            st.text("EDA.html file has been saved in your current working directory.")
 
 visualize_page()
