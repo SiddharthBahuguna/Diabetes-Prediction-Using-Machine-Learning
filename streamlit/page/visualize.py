@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from pandas_profiling import ProfileReport
+from ydata_profiling import ProfileReport
 # from streamlit_pandas_profiling import st_profile_report
 import os
 
@@ -12,7 +12,7 @@ def visualize_page():
     st.title("Exploratory Data Analysis")
     st.markdown(
         """
-        **Pandas Profiling** is used to generate this extensive report.
+        **ydata-profiling** (previously, Pandas Profiling) is used to generate this extensive report.
         """
     )
     
@@ -23,8 +23,8 @@ def visualize_page():
     if uploaded_file is not None:
         
         df = pd.read_csv(uploaded_file)
-        profile_report = ProfileReport(df, explorative=True)
-        st.subheader("**Pandas Profiling Report will be generated in your local directory**")
+        profile_report = ProfileReport(df, explorative=True, dark_mode=True)
+        st.subheader("**Profiling Report will be generated in your local directory**")
         st.subheader("Input DataFrame")
         st.write(df.head(5))
 
@@ -46,8 +46,8 @@ def visualize_page():
                 return pd.read_csv(filepath)
             df = load_data()
 
-            profile_report = ProfileReport(df, explorative=True)
-            st.subheader("**Pandas Profiling Report will be generated in your local directory**")
+            profile_report = ProfileReport(df, explorative=True, dark_mode=True)
+            st.subheader("**Profiling Report will be generated in your local directory**")
             st.subheader("Input DataFrame")
             st.write(df.head(5))
 
