@@ -20,6 +20,13 @@ $~$
 |       |__ index.html
 |       |__ result.html
 |   
+|__ streamlit/
+|   |__ app.py
+|   |__ page/
+|       |__  build.py
+|       |__  predict.py
+|       |__  visualize.py
+|
 |__ model/
 |   |__ model_joblib_diabetes
 |
@@ -51,8 +58,12 @@ $~$
 
 3. Install dependencies:
    ```bash
-   pip install pandas numpy scikit-learn joblib tk customtkinter Flask
+   pip install -r requirements.txt
+   pip install --upgrade numpy
    ```
+   > **NOTE**
+   > 
+   > Make sure you have installed numpy>=2.0.0 (pip will raise a dependency conflict error since ydata-profiling currently requires numpy<2, >=1.16 but that's not a problem for this project)
 
 ## 📊 How to Run Jupyter Notebook
 
@@ -87,19 +98,41 @@ $~$
   ```bash
   python app.py
   ```
+## How to Run Streamlit Web App 📊 🛠️ 🔎
 
+- Navigate to the `streamlit` folder:
+  ```bash
+  cd streamlit
+  ```
+- Run the streamlit application:
+  ```bash
+  streamlit run app.py
+  ```
+- Wait for the pages to load
+     - Predict from the pre-existing model
+     - Build your own (Random Forest Classifier) model and get insights on it
+     - Visualize any dataset by generating its Exploratory Data Analysis
 $~$
 
 ## 📸 Screenshots
 
-#### Tkinter UI 
+<details>
+   <summary>
+      <h4>Tkinter UI</h4>
+   </summary>
+   
+   ![nd](https://github.com/SiddharthBahuguna/Diabetes-Prediction-Using-Machine-Learning/assets/112819453/58a43b40-76c4-471f-b143-bc5d619e3648)
+</details>
 
-![nd](https://github.com/SiddharthBahuguna/Diabetes-Prediction-Using-Machine-Learning/assets/112819453/58a43b40-76c4-471f-b143-bc5d619e3648)
 
+<details>
+   <summary>
+      <h4>Gradio UI</h4>
+   </summary>
+   
+   ![Gradio UI](https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/698ccb3d-916a-4858-9365-3d43c99ce358)
+</details>
 
-#### Gradio UI
-
-![Gradio UI](https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/698ccb3d-916a-4858-9365-3d43c99ce358)
 
 <details>
    <summary>
@@ -113,7 +146,7 @@ $~$
 
 <details markdown='1'>
    <summary><h3>EDA Screenshots</h3> <br>
-            <h4>Click and Zoom on the Image for Better Visibility</h4> 
+            <p>Click and Zoom on the Image for Better Visibility</p> 
    </summary>
       <h4>Histogram</h4>
       <img src="https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/7a0e54ec-3642-475e-9bae-e5de07963d25" alt="Histogram" width=60% height=60%>
@@ -137,14 +170,41 @@ $~$
       <img src="https://github.com/shravn-10/Diabetes-Prediction-Using-Machine-Learning/assets/109055682/7d44b143-a773-4be6-a047-27131aa407cf" alt="scatter-plot" width=60% height=60%>
 </details>
 
+<details>
+   <summary>
+      <h3>Streamlit Web App / UI</h3>
+      <p>A multi-page Web Application consisting of three pages </p>
+   </summary>
+      <details styles={margin-left: 10px}>
+         <summary>
+            <p>🔮Predict : Using the pre-built GBC model</p>
+         </summary>
+         <img src="https://github.com/raokarthik15/Diabetes-Prediction-Using-Machine-Learning/assets/99039316/5e7d00ca-1d5b-41fe-9ae7-2ae62dbf0f5a" alt="Predict-page-light-mode" width=70%>
+         <img src="https://github.com/raokarthik15/Diabetes-Prediction-Using-Machine-Learning/assets/99039316/6904a4f1-22ea-4382-98af-06311062f1bf" alt="Predict-page-dark-mode" width=70%>
+      </details>
+      <details>
+         <summary>
+            <p>🛠️Build : A custom RFC model by optimizing hyperparameters</p>
+         </summary>
+         <img src="https://github.com/raokarthik15/Diabetes-Prediction-Using-Machine-Learning/assets/99039316/690822d5-1829-4f47-aeaf-799ce05f7395" alt="Build-page-light-mode" width=70%>
+         <img src="https://github.com/raokarthik15/Diabetes-Prediction-Using-Machine-Learning/assets/99039316/abaaea2a-7118-4e92-b525-f7b8e46204e4" alt="Build-page-dark-mode" width=70%>
+      </details>
+      <details>
+         <summary>
+            <p>📊Visualize : A dataset by generating EDA as html using ydata-profiling</p>
+         </summary>
+         <img src="https://github.com/raokarthik15/Diabetes-Prediction-Using-Machine-Learning/assets/99039316/651bce3e-ea6f-4630-876f-ca13d52c4e4b" alt="Visualize-page-light-more" width=70%>
+         <img src="https://github.com/raokarthik15/Diabetes-Prediction-Using-Machine-Learning/assets/99039316/96f040d1-b71a-4d7e-be98-df7c7096bd98" alt="Visualize-page-dark-mode" width=70%>
+      </details>
+</details>
 
 ## :bicyclist: Roadmap
 - [x] EDA
 - [x] Model
 - [X] Tkinter Application
 - [X] Custom Tkinter Application
-- [ ] Flask/FastAPI Web Application
-- [ ] Streamlit Application
+- [X] Flask/FastAPI Web Application
+- [X] Streamlit Application
 
 $~$
 
