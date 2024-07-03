@@ -19,6 +19,9 @@ $~$
 |   |__ templates/
 |       |__ index.html
 |       |__ result.html
+|
+|__ api/
+|   |__ main.py
 |   
 |__ streamlit/
 |   |__ app.py
@@ -98,6 +101,7 @@ $~$
   ```bash
   python app.py
   ```
+
 ## How to Run Streamlit Web App 📊 🛠️ 🔎
 
 - Navigate to the `streamlit` folder:
@@ -112,6 +116,18 @@ $~$
      - Predict from the pre-existing model
      - Build your own (Random Forest Classifier) model and get insights on it
      - Visualize any dataset by generating its Exploratory Data Analysis
+
+## 🌐 How to Run FastAPI API
+
+- Navigate to the `api` folder:
+  ```bash
+  cd api
+  ```
+- Run the FastAPI application:
+  ```bash
+  fastapi dev main.py
+  ```
+
 $~$
 
 ## 📸 Screenshots
@@ -142,6 +158,16 @@ $~$
 ![Screenshot_26-6-2024_95820_127 0 0 1](https://github.com/kom-senapati/Diabetes-Prediction-Using-Machine-Learning/assets/92045934/f11a164f-befe-4b63-bf39-0a0ecad72009)
 ![Screenshot_26-6-2024_95830_127 0 0 1](https://github.com/kom-senapati/Diabetes-Prediction-Using-Machine-Learning/assets/92045934/474c2527-fb83-4eb8-9a1a-0bce7b0fb325)
 </details>
+
+<details>
+   <summary>
+      <h4>FastAPI API</h4>
+   </summary>
+
+![image](https://github.com/kom-senapati/Diabetes-Prediction-Using-Machine-Learning/assets/92045934/71ef099c-c8fd-490b-ad4d-09f731dd983e)
+![image](https://github.com/kom-senapati/Diabetes-Prediction-Using-Machine-Learning/assets/92045934/72665cc2-69b7-4f55-81bd-5f164c78b6cc)
+</details>
+
 
 
 <details markdown='1'>
@@ -203,8 +229,9 @@ $~$
 - [x] Model
 - [X] Tkinter Application
 - [X] Custom Tkinter Application
-- [X] Flask/FastAPI Web Application
+- [X] Flask Web Application
 - [X] Streamlit Application
+- [X] FastAPI API
 
 $~$
 
@@ -269,5 +296,3 @@ $~$
   <h3>Show some &nbsp;❤️&nbsp; by &nbsp;🌟&nbsp; this repository!</h3>
   <img src="https://media.giphy.com/media/LnQjpWaON8nhr21vNW/giphy.gif" width="60"> <em>Lets build <b>a cool community!</b></em>
 </div>
-
-
