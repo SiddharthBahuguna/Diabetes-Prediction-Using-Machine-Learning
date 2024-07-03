@@ -159,6 +159,16 @@ $~$
 ![Screenshot_26-6-2024_95830_127 0 0 1](https://github.com/kom-senapati/Diabetes-Prediction-Using-Machine-Learning/assets/92045934/474c2527-fb83-4eb8-9a1a-0bce7b0fb325)
 </details>
 
+<details>
+   <summary>
+      <h4>FastAPI API</h4>
+   </summary>
+
+![image](https://github.com/kom-senapati/Diabetes-Prediction-Using-Machine-Learning/assets/92045934/71ef099c-c8fd-490b-ad4d-09f731dd983e)
+![image](https://github.com/kom-senapati/Diabetes-Prediction-Using-Machine-Learning/assets/92045934/72665cc2-69b7-4f55-81bd-5f164c78b6cc)
+</details>
+
+
 
 <details markdown='1'>
    <summary><h3>EDA Screenshots</h3> <br>
