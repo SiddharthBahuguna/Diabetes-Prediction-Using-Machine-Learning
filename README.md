@@ -68,6 +68,14 @@ $~$
    > 
    > Make sure you have installed numpy>=2.0.0 (pip will raise a dependency conflict error since ydata-profiling currently requires numpy<2, >=1.16 but that's not a problem for this project)
 
+$~$
+
+## 🎥 Video Demonstration
+
+Link - https://www.dropbox.com/scl/fi/0hzpegrryti8kt9cfh5nu/Video-Demonstration.mp4?rlkey=jdhznsiuf2hlebrose42onep1&st=m056xdt8&dl=0
+
+$~$
+
 ## 📊 How to Run Jupyter Notebook
 
 - Start Jupyter Notebook server:
